@@ -1,47 +1,63 @@
 <!doctype html>
 <html>
 <head>
-<title>Morphological Analyzer</title>
-<meta charset=utf-8>
+  <title>Morphological Analyzer</title>
+  <meta charset=utf-8>
+  <script src=js/jquery.js></script>
+  <script src=js/underscore.js></script>
+  <script src=js/backbone.js></script>
+  <script src=js/d3.v2.js></script>
+  <link rel=stylesheet type=text/css href=css/style.css />
+  <style>
+  
+    body { 
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #analyzer{
+      padding: 2em;
+      text-align:center;
+    }
+    
+    input#word { 
+      width: 25em;
+      text-align:center;
+      font-family: 'Times New Roman';
+      font-size: x-large;
+      padding: 5px;
+       
+    }
+    
+    :focus { 
+      background: lightyellow;
+    }
 
-<script src=js/jquery.js></script>
-<script src=js/underscore.js></script>
-<script src=js/backbone.js></script>
-<script src=js/d3.v2.js></script>
-
-<link rel=stylesheet type=text/css href=css/style.css />
-
-<style>
-
-body { 
-  padding: 0;
-  margin: 0;
-}
-
-#morphalyzer {
-  padding: 2em;
-  text-align:center;
-}
-
-input { 
-  width: 20em;
-  font-family: 'Times New Roman';
-   
-}
-
-</style>
+    .letter { 
+      border-radius: 50%;
+      display:inline-block;
+      min-width:2em;
+      height:2em;
+      text-align:center;
+      line-height:2em;
+      margin:.25em;
+      background: red; 
+      color: white; 
+    }
+  
+  </style>
+  <script src=js/analyzer.js></script>
 </head>
+
 <body>
 
-<aside id=alphabet>
-  <textarea></textarea>
-</aside>
+  <article id=analyzer>
+    <input id=alphabet>
+    <br><input id=word value="anopʰow">
+  </article>
 
-<article id=morphalyzer>
-  <input id=word></input>
-</article>
-
+  <p class=morphemes></p>
 
 </body>
-
 </html>
