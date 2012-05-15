@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<title>Morphological Analyzer</title>
+<meta charset=utf-8>
+
+<script src=js/jquery.js></script>
+<script src=js/underscore.js></script>
+<script src=js/backbone.js></script>
+<script src=js/d3.v2.js></script>
+
+<link rel=stylesheet type=text/css href=css/style.css />
+
+<style>
+
+body { 
+  padding: 0;
+  margin: 0;
+}
+#alphabet {
+  background:red;
+  width: 100%;
+}
+
+#alphabet textarea {
+  width: 90%;
+}
+
+#morphalyzer {
+  text-align:center;
+}
+
+input { 
+  font-size: x-large;
+  width: 20em;
+  font-family: 'Times New Roman';
+   
+}
+
+</style>
+</head>
+<body>
+
+<div id=alphabet>
+  <textarea></textarea>
+</div>
+
+<div id=morphalyzer>
+  <input id=word></input>
+</div>
+
+
+</body>
+
+</html>
