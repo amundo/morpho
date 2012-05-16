@@ -1,65 +1,75 @@
-window.Analyzer = Backbone.View.extend({
+window.Word = Backbone.Model.extend({
 
-  el: $('body'),
+  initialize : function(rawWord){
+    _.bindAll(this, 'analyze'); 
+    this.rawWord = rawWord;
+    this.morphemes = this.analyze(rawWord);
+  },
 
-  events : {
-    'keyup input' : 'log' 
+  analyze : function(rawWord){
+    /*var delimiters = '-=~;'.split('');
+    var pattern = '(' + delimiters.join('|') + ')';*/
+
+    var delimiters = '-=~;';
+    var pattern = '[' + delimiters + ']';
+    return rawWord.split(new RegExp(pattern,'g'));
+  }
+
+}) 
+
+window.MorphTable = Backbone.View.extend({
+  el : $('table'),
+
+  initialize : function(){
+    _.bindAll(this, 'render'); 
+  },
+
+  rowTemplate : $("#morphemesTemplate").html(),
+
+  render : function(){
+    var template = _.template(this.rowTemplate);
+    var html = template(this.model.toJSON());
+    return this;
+  }
+})
+
+window.Morpheme = Backbone.Model.extend({ })
+
+window.Morphemes = Backbone.Collection.extend({
+
+  model: Morpheme,
+  url: '/morphemes'
+
+})
+
+window.App = Backbone.View.extend({
+
+  events: { 
+
+    'keyup #analyzer #word' : 'analyze'
+
+  },
+
+  analyze: function(ev){
+    if(ev.which == 13 ){  
+      ev.preventDefault();
+      var raw = $(ev.target).val();
+      var word = new Word(raw);
+      console.log(word);
+    }
   },
 
   initialize: function(){
-    _.bindAll(this, 'log')
-  },
+    
+  }
 
-  log: function(){
-    console.log($(this.el).find('input').val());
-  },
-
-
-}) 
-
-window.Letter = Backbone.Model.extend({
 })
 
-window.Word = Backbone.Collection.extend({
-
-  model : Letter,
-
-}) 
-
-
 $(function(){
-  window.analyzer = new Analyzer;  
 
-  function readAlphabet(){
-    return $('#alphabet').val().split(' '); //['a','-', 'pʰ','n','h','p','o','w'];
-  }
-
-  function letterize(word, alphabet){
-    /* split up word according to alphabet */
-    var pattern = '(' + alphabet.join('|') + ')';
-    var letters = word.match(new RegExp(pattern,'g'));
-      return letters
-  };
-
-  function letterize(word){
-    /* split up marked up word according to morphemes */
-    var delimiters = '-=~;';
-    var pattern = '(' + alphabet.join('|') + ')';
-    var letters = word.match(new RegExp(pattern,'g'));
-      return letters
-  };
-
-  function main(){
-    var word = $('#word').val();
-    var alphabet = readAlphabet();
-    var letters = letterize(word, alphabet);
-    _.each(letters, function(letter){
-      $('.morphemes').append('<span class=letter>' + letter + '</span>')
-    })
-  }
-
-  $('#word').keyup(function(ev){ 
-    main();
-  });
+  window.app = new App({ el: $('body')}) ;
+  w = new Word($('#word').val())
+  t = _.template($('#morphemesTemplate').html())
+  $('body').append('<table>' + t(w) + '</table>')
 
 })

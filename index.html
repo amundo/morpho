@@ -45,6 +45,10 @@
       background: red; 
       color: white; 
     }
+    
+    th { 
+      text-align:right;
+    }
   
   </style>
   <script src=js/analyzer.js></script>
@@ -53,11 +57,17 @@
 <body>
 
   <article id=analyzer>
-    <input id=alphabet>
-    <br><input id=word value="anopʰow">
+    <input id=word value="anopʰow">
   </article>
 
-  <p class=morphemes></p>
+<script id='morphemesTemplate' type='text/template'>
+    <% for (var i = 0; i < morphemes.length; i++) { %>
+      <tr>
+      <th><%= morphemes[i] %></th>
+      <td><input></td>
+      </tr>
+    <% } %>
+</script>
 
 </body>
 </html>
