@@ -3,21 +3,21 @@ window.Word = Backbone.Model.extend({
   initialize : function(rawWord){
     _.bindAll(this, 'analyze'); 
     this.rawWord = rawWord;
-    this.morphemes = this.analyze(rawWord);
+    /*this.morphemes = this.analyze(rawWord);*/
+    this.analyze(rawWord);
   },
 
   analyze : function(rawWord){
-    /*var delimiters = '-=~;'.split('');
-    var pattern = '(' + delimiters.join('|') + ')';*/
-
     var delimiters = '-=~;';
     var pattern = '[' + delimiters + ']';
-    return rawWord.split(new RegExp(pattern,'g'));
+    //return rawWord.split(new RegExp(pattern,'g'));
+    var morphemes = rawWord.split(new RegExp(pattern,'g'));
+    this.morphemes = morphemes;
   }
 
 }) 
 
-window.MorphTable = Backbone.View.extend({
+window.MorphTableView = Backbone.View.extend({
   el : $('table'),
 
   initialize : function(){
@@ -29,7 +29,7 @@ window.MorphTable = Backbone.View.extend({
   render : function(){
     var template = _.template(this.rowTemplate);
     var html = template(this.model.toJSON());
-    return this;
+    this.el.html(html);
   }
 })
 
@@ -55,12 +55,14 @@ window.App = Backbone.View.extend({
       ev.preventDefault();
       var raw = $(ev.target).val();
       var word = new Word(raw);
-      console.log(word);
+      w = new Word($('#word').val())
+      t = _.template($('#morphemesTemplate').html())
+      this.$el.append('<table>' + t(w) + '</table>')
     }
   },
 
   initialize: function(){
-    
+  //  _.bindAll(this, 'analyze'); 
   }
 
 })
@@ -68,8 +70,5 @@ window.App = Backbone.View.extend({
 $(function(){
 
   window.app = new App({ el: $('body')}) ;
-  w = new Word($('#word').val())
-  t = _.template($('#morphemesTemplate').html())
-  $('body').append('<table>' + t(w) + '</table>')
 
 })
