@@ -3,66 +3,53 @@ window.Word = Backbone.Model.extend({
   initialize : function(rawWord){
     _.bindAll(this, 'analyze'); 
     this.rawWord = rawWord;
-    /*this.morphemes = this.analyze(rawWord);*/
     this.analyze(rawWord);
   },
 
   analyze : function(rawWord){
     var delimiters = '-=~;';
     var pattern = '[' + delimiters + ']';
-    //return rawWord.split(new RegExp(pattern,'g'));
     var morphemes = rawWord.split(new RegExp(pattern,'g'));
     this.morphemes = morphemes;
   }
 
 }) 
 
-window.MorphTableView = Backbone.View.extend({
+window.MorphemeTableView = Backbone.View.extend({
   el : $('table'),
 
   initialize : function(){
     _.bindAll(this, 'render'); 
   },
 
-  rowTemplate : $("#morphemesTemplate").html(),
-
   render : function(){
-    var template = _.template(this.rowTemplate);
+    var template = _.template($("#morphemesTemplate").html());
     var html = template(this.model.toJSON());
     this.el.html(html);
+    t = _.template($('#morphemesTemplate').html())
+    this.$el.find('.analysis').html('<table>' + t(w) + '</table>')
   }
-})
-
-window.Morpheme = Backbone.Model.extend({ })
-
-window.Morphemes = Backbone.Collection.extend({
-
-  model: Morpheme,
-  url: '/morphemes'
-
 })
 
 window.App = Backbone.View.extend({
 
   events: { 
 
-    'keyup #analyzer #word' : 'analyze'
+    'keyup #analyzer #word' : 'analyzeOnEnter'
 
   },
 
-  analyze: function(ev){
+  analyzeOnEnter: function(ev){
     if(ev.which == 13 ){  
       ev.preventDefault();
       var raw = $(ev.target).val();
-      var word = new Word(raw);
       w = new Word($('#word').val())
-      t = _.template($('#morphemesTemplate').html())
-      this.$el.append('<table>' + t(w) + '</table>')
+      morphemeTableView = new MorphemeTableView({'model': w});
     }
   },
 
   initialize: function(){
-  //  _.bindAll(this, 'analyze'); 
+    _.bindAll(this, 'analyzeOnEnter'); 
   }
 
 })

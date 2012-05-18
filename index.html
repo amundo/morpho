@@ -5,69 +5,27 @@
   <meta charset=utf-8>
   <script src=js/jquery.js></script>
   <script src=js/underscore.js></script>
+  <script src=js/underscore.string.js></script>
   <script src=js/backbone.js></script>
-  <script src=js/d3.v2.js></script>
   <link rel=stylesheet type=text/css href=css/style.css />
-  <style>
-  
-    body { 
-      text-align: center;
-      padding: 0;
-      margin: 0;
-    }
-    
-    #analyzer{
-      padding: 2em;
-      text-align:center;
-    }
-    
-    input#word { 
-      width: 25em;
-      text-align:center;
-      font-family: 'Times New Roman';
-      font-size: x-large;
-      padding: 5px;
-       
-    }
-    
-    :focus { 
-      background: lightyellow;
-    }
-
-    .letter { 
-      border-radius: 50%;
-      display:inline-block;
-      min-width:2em;
-      height:2em;
-      text-align:center;
-      line-height:2em;
-      margin:.25em;
-      background: red; 
-      color: white; 
-    }
-    
-    th { 
-      text-align:right;
-    }
-  
-  </style>
-  <script src=js/analyzer.js></script>
+  <script src=js/morphemes.js></script>
 </head>
-
 <body>
 
-  <article id=analyzer>
-    <input id=word value="anopʰow">
-  </article>
+  <p id=analyzer>
+    <span contenteditable=true spellcheck=false class=word>nohpʰo-w</span>
+  </p>
 
-<script id='morphemesTemplate' type='text/template'>
+  <script id='morphemesTemplate' type='text/template'>
+  <table class=morphemes>
     <% for (var i = 0; i < morphemes.length; i++) { %>
       <tr>
-      <th><%= morphemes[i] %></th>
-      <td><input></td>
+        <th><%= morphemes[i] %></th>
+        <td><input></td>
       </tr>
     <% } %>
-</script>
+  </table>
+  </script>
 
 </body>
 </html>
