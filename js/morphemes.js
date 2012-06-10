@@ -1,78 +1,93 @@
-/*
-when the user presses enter
-parse the word
-for each morpheme
-  show the morpheme and a field
-when any field is changed
-  add the 
-*/
+function dump(obj){ 
+  console.log(JSON.stringify(obj, null, 2));
+}
 
-var Text = Backbone.Model.extend({ 
-  initialize: function(node){
-    
-  }
-});
+$(function(){
+  App = {};
 
-var WordView = Backbone.View.extend({ 
-  events : {
-    'keyup' : 'log'
-  },
-  log : function(ev){
-    console.log(ev.which);
-  },
-    
-});
+  
+  App.Morpheme = Backbone.Model.extend({ 
+    defaults: {
+      type : 'unknown',
+      gloss : 'unknown'
+    },
+  
+    initialize: function(){
+      _.bindAll(this, 'suggest');
+    },
+  
+    addGloss: function(gloss){
+      this.set('gloss', gloss)
+    },
+  
+    suggest: function(){
+      _.bindAll(this);
+    }
+  
+  });
+  
+  App.MorphemeRegistry = Backbone.Collection.extend({ 
+    model: App.Morpheme,
 
-var Word = Backbone.Model.extend({ 
-  defaults: {
-    delimiters: '=-~',
-    form: ''
-  },
+    search : function(query){
+      if(query == "") return this;
+      
+      var pattern = new RegExp(query,"gi");
+      return _(this.filter(function(morpheme) {
+        return pattern.test(morpheme.get("form"));
+      }));
+    }
+  })
+  App.WordView = Backbone.View.extend({ 
+    events : {
+      'keyup input' : 'createWordOnEnter'
+    },
+  
+    initialize : function(){
+      _.bindAll(this, 'render', 'createWordOnEnter');
+    },
+  
+    createWordOnEnter : function(ev){
+      if (ev.which == 13){
+        var form = $(ev.target).val();
+        App.word = new Word({form: form}); 
+//console.log(App.word.toJSON());
 
-  initialize: function(){
-    _.bindAll(this, 'analyze');
-    this.analyze();
-  },
+        ev.preventDefault();
+      } 
+    },
+  
+    render : function(){
+      $(this.el).append();
+      console.log(this.el);
+      return this;
+    },
+      
+  });
+  
+  Word = Backbone.Model.extend({ 
+    initialize: function(){
+      _.bindAll(this, 'analyze');
+      this.analysis = new Backbone.Collection.extend({model:App.Morpheme});
+      //_.bind(this, 'change:form', );
+      this.analyze();
+    },
+  
+    analyze: function(){
+      var delimiterRE = new RegExp('[-=~]', 'g');
+      var morphemes = this.get('form').split(delimiterRE); 
+      
+    }
+  });
 
-  analyze: function(){
-    var delimiterRE = new RegExp('[-=~]', 'g');
-    this.set({ morphemes: this.get('form').split(delimiterRE) });
-  }
-});
 
-var Morpheme = Backbone.Model.extend({ 
 
-  suggest: function(){
-    // is this morpheme in the database?
-  },
+  App.wordView = new App.WordView({ el : $('#word')  });
+  App.morphemeRegistry = new App.MorphemeRegistry([ 
+    { 'form': 'nohpʰo', 'gloss': 'to.live' },
+    { 'form': 'w', 'gloss': 'ABSOLUTIVE' },
+    { 'form': 'mu', 'gloss': 'IP-energy' }
+  ]);
 
-  classify: function(){
-    // set prefix, suffix, clitic, reduplication
-  }
-
-});
-
-var Morphemes = Backbone.Collection.extend({ model: Morpheme });
-
-Lang = { 
-  Morpheme: Morpheme,
-  WordView: WordView,
-  Morphemes: Morphemes
-} ;
-
-var word_data = [
-  {
-    analyzed: 'nohpʰo-w',
-    analysis: [
-      ['nohpʰo', 'live'],
-      ['w', 'ABSOLUTIVE']
-    ]
-  },
-
-  {
-    analyzed: 'beli',
-    analysis: [
-      ['beli', 'here']
-    ]
-  }
-]
+  
+})
