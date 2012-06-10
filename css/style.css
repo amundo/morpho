@@ -1,28 +1,10 @@
 body { 
-  text-align: center;
-  padding: 0;
+  padding: 0 1em;
   margin: 0;
 }
 
-#analyzer{
-  padding: 2em;
-  text-align:center;
+#word input { 
+  font-size:x-large;
+  font-family:'Gentium Plus';
+  width: 20em;
 }
-
-[contenteditable=true]{
-  background: 
-}
-span.word { 
-  text-align:center;
-  font-family: 'Times New Roman';
-  border:none;
-  border-bottom: 1px dashed #666;
-  font-size: x-large;
-  padding: 5px;
-   
-}
-
-th { 
-  text-align:right;
-}
-
