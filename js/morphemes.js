@@ -9,6 +9,7 @@ $(function(){
   App.Morpheme = Backbone.Model.extend({ 
     defaults: {
       type : 'unknown',
+      form : 'unknown',
       gloss : 'unknown'
     },
   
@@ -29,15 +30,38 @@ $(function(){
   App.MorphemeRegistry = Backbone.Collection.extend({ 
     model: App.Morpheme,
 
+    initialize : function(){
+    },
+
     search : function(query){
       if(query == "") return this;
       
-      var pattern = new RegExp(query,"gi");
+      var pattern = new RegExp(query,'gi');
+
       return _(this.filter(function(morpheme) {
-        return pattern.test(morpheme.get("form"));
+        return pattern.test(morpheme.get('form'));
       }));
     }
   })
+
+  Word = Backbone.Model.extend({ 
+    initialize: function(){
+      _.bindAll(this, 'analyze', 'wtf');
+      this.on('change:morphemes', this.wtf);
+      this.analyze();
+    },
+  
+    analyze: function(){
+      var delimiterRE = new RegExp('[-=~]', 'g');
+      var morphemes = this.get('form').split(delimiterRE); 
+      this.set({'morphemes': morphemes});
+      App.morphemeRegistry.add({'morphemes': morphemes});
+    },
+    wtf: function(){
+      console.log('wtf');
+    }
+  });
+
   App.WordView = Backbone.View.extend({ 
     events : {
       'keyup input' : 'createWordOnEnter'
@@ -51,8 +75,6 @@ $(function(){
       if (ev.which == 13){
         var form = $(ev.target).val();
         App.word = new Word({form: form}); 
-//console.log(App.word.toJSON());
-
         ev.preventDefault();
       } 
     },
@@ -65,22 +87,6 @@ $(function(){
       
   });
   
-  Word = Backbone.Model.extend({ 
-    initialize: function(){
-      _.bindAll(this, 'analyze');
-      this.analysis = new Backbone.Collection.extend({model:App.Morpheme});
-      //_.bind(this, 'change:form', );
-      this.analyze();
-    },
-  
-    analyze: function(){
-      var delimiterRE = new RegExp('[-=~]', 'g');
-      var morphemes = this.get('form').split(delimiterRE); 
-      
-    }
-  });
-
-
 
   App.wordView = new App.WordView({ el : $('#word')  });
   App.morphemeRegistry = new App.MorphemeRegistry([ 
