@@ -1,0 +1,64 @@
+deniz ‘an ocean’
+deniz 
+ocean
+
+denize ‘to an ocean’
+deniz-e
+ocean-DAT
+
+denizin ‘of an ocean’
+deniz-in 
+ocean-GEN
+
+eve ‘to a house’
+ev-e
+house-DAT
+
+evden ‘from a house’
+ev-den
+house-ABL
+
+evʤɪkden ‘from a little house’
+ev-ʤɪk-den 
+house-little-ABL
+
+denizʤɪkde ‘in a little ocean’
+deniz-ʤɪk-de 
+ocean-little-LOC
+
+elde ‘in a hand’
+el-de 
+hand-LOC
+
+elim ‘my hand’
+el-im
+hand-1.POSS.SG
+
+eller ‘hands’
+el-ler 
+hand-PL
+
+diʃler ‘teeth’
+diʃ-ler 
+tooth-PL
+
+diʃimizin ‘of our tooth’
+diʃ-imiz-in 
+tooth-2.PL.POSS-GEN
+
+diʃlerimizin ‘of our teeth’
+diʃ-ler-imiz-in 
+tooth-PL-2.PL.POSS-GEN
+
+elʤɪke ‘to a little hand’
+el-ʤɪk-e 
+hand-little-DAT
+
+denizlerimizde ‘in our oceans’
+deniz-ler-imiz-de 
+ocean-PL-2.PL.POSS-LOC
+
+evʤɪklerimizde ‘in our little houses’
+ev-ʤɪk-ler-imiz-de 
+house-little-PL-2.PL.POSS-LOC
+
