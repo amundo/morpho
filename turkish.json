@@ -1,0 +1,266 @@
+[
+  {
+    "definition": "an ocean", 
+    "form": "deniz", 
+    "morphemes": [
+      {
+        "gloss": "ocean", 
+        "morph": "deniz "
+      }
+    ]
+  }, 
+  {
+    "definition": "to an ocean", 
+    "form": "denize", 
+    "morphemes": [
+      {
+        "gloss": "ocean", 
+        "morph": "deniz"
+      }, 
+      {
+        "gloss": "DAT", 
+        "morph": "e"
+      }
+    ]
+  }, 
+  {
+    "definition": "of an ocean", 
+    "form": "denizin", 
+    "morphemes": [
+      {
+        "gloss": "ocean", 
+        "morph": "deniz"
+      }, 
+      {
+        "gloss": "GEN", 
+        "morph": "in "
+      }
+    ]
+  }, 
+  {
+    "definition": "to a house", 
+    "form": "eve", 
+    "morphemes": [
+      {
+        "gloss": "house", 
+        "morph": "ev"
+      }, 
+      {
+        "gloss": "DAT", 
+        "morph": "e"
+      }
+    ]
+  }, 
+  {
+    "definition": "from a house", 
+    "form": "evden", 
+    "morphemes": [
+      {
+        "gloss": "house", 
+        "morph": "ev"
+      }, 
+      {
+        "gloss": "ABL", 
+        "morph": "den"
+      }
+    ]
+  }, 
+  {
+    "definition": "from a little house", 
+    "form": "ev\u02a4\u026akden", 
+    "morphemes": [
+      {
+        "gloss": "house", 
+        "morph": "ev"
+      }, 
+      {
+        "gloss": "little", 
+        "morph": "\u02a4\u026ak"
+      }, 
+      {
+        "gloss": "ABL", 
+        "morph": "den "
+      }
+    ]
+  }, 
+  {
+    "definition": "in a little ocean", 
+    "form": "deniz\u02a4\u026akde", 
+    "morphemes": [
+      {
+        "gloss": "ocean", 
+        "morph": "deniz"
+      }, 
+      {
+        "gloss": "little", 
+        "morph": "\u02a4\u026ak"
+      }, 
+      {
+        "gloss": "LOC", 
+        "morph": "de "
+      }
+    ]
+  }, 
+  {
+    "definition": "in a hand", 
+    "form": "elde", 
+    "morphemes": [
+      {
+        "gloss": "hand", 
+        "morph": "el"
+      }, 
+      {
+        "gloss": "LOC", 
+        "morph": "de "
+      }
+    ]
+  }, 
+  {
+    "definition": "my hand", 
+    "form": "elim", 
+    "morphemes": [
+      {
+        "gloss": "hand", 
+        "morph": "el"
+      }, 
+      {
+        "gloss": "1.POSS.SG", 
+        "morph": "im"
+      }
+    ]
+  }, 
+  {
+    "definition": "hands", 
+    "form": "eller", 
+    "morphemes": [
+      {
+        "gloss": "hand", 
+        "morph": "el"
+      }, 
+      {
+        "gloss": "PL", 
+        "morph": "ler "
+      }
+    ]
+  }, 
+  {
+    "definition": "teeth", 
+    "form": "di\u0283ler", 
+    "morphemes": [
+      {
+        "gloss": "tooth", 
+        "morph": "di\u0283"
+      }, 
+      {
+        "gloss": "PL", 
+        "morph": "ler "
+      }
+    ]
+  }, 
+  {
+    "definition": "of our tooth", 
+    "form": "di\u0283imizin", 
+    "morphemes": [
+      {
+        "gloss": "tooth", 
+        "morph": "di\u0283"
+      }, 
+      {
+        "gloss": "2.PL.POSS", 
+        "morph": "imiz"
+      }, 
+      {
+        "gloss": "GEN", 
+        "morph": "in "
+      }
+    ]
+  }, 
+  {
+    "definition": "of our teeth", 
+    "form": "di\u0283lerimizin", 
+    "morphemes": [
+      {
+        "gloss": "tooth", 
+        "morph": "di\u0283"
+      }, 
+      {
+        "gloss": "PL", 
+        "morph": "ler"
+      }, 
+      {
+        "gloss": "2.PL.POSS", 
+        "morph": "imiz"
+      }, 
+      {
+        "gloss": "GEN", 
+        "morph": "in "
+      }
+    ]
+  }, 
+  {
+    "definition": "to a little hand", 
+    "form": "el\u02a4\u026ake", 
+    "morphemes": [
+      {
+        "gloss": "hand", 
+        "morph": "el"
+      }, 
+      {
+        "gloss": "little", 
+        "morph": "\u02a4\u026ak"
+      }, 
+      {
+        "gloss": "DAT", 
+        "morph": "e "
+      }
+    ]
+  }, 
+  {
+    "definition": "in our oceans", 
+    "form": "denizlerimizde", 
+    "morphemes": [
+      {
+        "gloss": "ocean", 
+        "morph": "deniz"
+      }, 
+      {
+        "gloss": "PL", 
+        "morph": "ler"
+      }, 
+      {
+        "gloss": "2.PL.POSS", 
+        "morph": "imiz"
+      }, 
+      {
+        "gloss": "LOC", 
+        "morph": "de "
+      }
+    ]
+  }, 
+  {
+    "definition": "in our little houses", 
+    "form": "ev\u02a4\u026aklerimizde", 
+    "morphemes": [
+      {
+        "gloss": "house", 
+        "morph": "ev"
+      }, 
+      {
+        "gloss": "little", 
+        "morph": "\u02a4\u026ak"
+      }, 
+      {
+        "gloss": "PL", 
+        "morph": "ler"
+      }, 
+      {
+        "gloss": "2.PL.POSS", 
+        "morph": "imiz"
+      }, 
+      {
+        "gloss": "LOC", 
+        "morph": "de "
+      }
+    ]
+  }
+]

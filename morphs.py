@@ -41,13 +41,16 @@ glossed_words = [process_word(word) for word in words]
 inventory = set()
 for glossed_word in glossed_words: 
   for morpheme  in glossed_word['morphemes']:
-    inventory.add((morpheme['morph'], morpheme['gloss']))
+    inventory.add([morpheme['morph'], morpheme['gloss']])
 
 
 #print json.dumps(glossed_words, indent=2)
 #print json.dumps(inventory, indent=2)
 
-for morph, gloss in sorted(inventory): 
-  print morph, gloss
+open('turkish.json','w').write(json.dumps(glossed_words, indent=2))
+open('turkish_morphemes.json','w').write(json.dumps(inventory, indent=2))
+
+#for morph, gloss in sorted(inventory): 
+#  print morph, gloss
 
 
